@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WhatsApp Clone</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    body {
+      display: flex;
+    }
+    .sidebar {
+      width: 60px;
+      height: 100vh;
+      background-color: rgb(220, 223, 225);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .sidebar img {
+      width: 60px;
+    }
+    .chat-panel {
+      width: 400px;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background-color: white;
+    }
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      color: green;
+    }
+    .menu-btn {
+      width: 40px;
+      cursor: pointer;
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      left: 430px;
+      top: 70px;
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      width: 250px;
+      padding: 10px 20px;
+    }
+    .dropdown-menu.show {
+      display: block;
+    }
+    .dropdown-menu p {
+      padding: 6px 0;
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background-color: #f7f4f1;
+      padding: 6px 12px;
+      border-radius: 20px;
+    }
+    .search-box img {
+      width: 30px;
+    }
+    .search-box input {
+      border: none;
+      outline: none;
+      background: transparent;
+    }
+    .filter-buttons {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .filter-buttons button {
+      border: 1px solid #ccc;
+      background: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      color: gray;
+    }
+    .chat-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .chat-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-user {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .chat-user img {
+      width: 55px;
+      height: 55px;
+    }
+
+    .empty-area {
+      flex: 1;
+      background: #f7f4f1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .info-box {
+      background: white;
+      padding: 40px;
+      border-radius: 40px;
+      text-align: center;
+      width: 330px;
+    }
+
+    .info-box img {
+      width: 150px;
+    }
+
+    .info-box button {
+      margin-top: 15px;
+      background: #a9e3a1;
+      border: none;
+      padding: 10px;
+      border-radius: 20px;
+      color: green;
+      font-weight: bold;
+    }
+    .chat-window {
+      flex: 1;
+      background: #efeae2;
+      display: flex;
+      flex-direction: column;
+    }
+    .chat-header {
+      background: #f0f2f5;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .chat-user-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .chat-user-info img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+    .chat-messages {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      overflow-y: auto;
+    }
+
+    .msg {
+      max-width: 60%;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    .received {
+      background: white;
+      align-self: flex-start;
+    }
+
+    .sent {
+      background: #d9fdd3;
+      align-self: flex-end;
+    }
+
+    .chat-input {
+      background: #f0f2f5;
+      padding: 10px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .chat-input input {
+      flex: 1;
+      border: none;
+      padding: 10px;
+      border-radius: 20px;
+      outline: none;
+    }
+
+    .chat-input button {
+      border: none;
+      background: green;
+      color: white;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <div class="sidebar">
+      <img src="koma.jpg" class="side-top" />
+      <img src="koma.jpg" class="side-bottom" />
+    </div>
+
+    <div class="chat-panel">
+      <div class="panel-header">
+        <h1 class="logo">WhatsApp</h1>
+        <img src="koma.jpg" class="menu-btn" />
+      </div>
+
+      <div class="dropdown-menu">
+        <p>Новая группа</p>
+        <p>Избранные сообщения</p>
+        <p>Выбрать чаты</p>
+        <p>Пометить как прочитанное</p>
+        <p>Блокировка приложения</p>
+        <p>Выйти</p>
+      </div>
+
+      <div class="search-box">
+        <img src="koma.jpg" />
+        <input type="text" placeholder="Поиск или новый чат" />
+      </div>
+
+      <div class="filter-buttons">
+        <button>Все</button>
+        <button>Непрочитанное</button>
+        <button>Избранное</button>
+        <button>Группы</button>
+      </div>
+
+      <div class="chat-list">
+        <div class="chat-item">
+          <div class="chat-user">
+            <img src="koma.jpg" />
+            <div>
+              <strong>Юля</strong>
+              <p>hello</p>
+            </div>
+          </div>
+          <span>19:30</span>
+        </div>
+
+        <div class="chat-item">
+          <div class="chat-user">
+            <img src="koma.jpg" />
+            <div>
+              <strong>mama</strong>
+              <p>жарайды</p>
+            </div>
+          </div>
+          <span>1:35</span>
+        </div>
+
+        <div class="chat-item">
+          <div class="chat-user">
+            <img src="koma.jpg" />
+            <div>
+              <strong>кома</strong>
+              <p>болды братан</p>
+            </div>
+          </div>
+          <span>19:20</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-window">
+      <div class="chat-header">
+        <div class="chat-user-info">
+          <img src="koma.jpg" />
+          <strong>Юля</strong>
+        </div>
+      </div>
+
+      <div class="chat-messages">
+        <div class="msg received">Salem</div>
+        <div class="msg sent">Salem, qalaysyn?</div>
+        <div class="msg received">Jaqsy, ozin?</div>
+      </div>
+
+      <div class="chat-input">
+        <input type="text" placeholder="Сообщение жаз..." />
+        <button>➤</button>
+      </div>
+    </div>
+    <script>
+      const menuBtn = document.querySelector(".menu-btn");
+      const dropdown = document.querySelector(".dropdown-menu");
+
+      menuBtn.addEventListener("click", () =>
+        dropdown.classList.toggle("show"),
+      );
+    </script>
+  </body>
+</html>
